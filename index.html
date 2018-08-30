@@ -42,11 +42,26 @@
             </ons-toolbar>
 
             <p style="text-align: center; margin-top: 10px;">
-                    <ons-search-input
-                      placeholder="Search"
-                      onchange="ons.notification.alert('Searched for: ' + this.value)"
-                    ></ons-search-input>
-                  </p>
+                <ons-search-input placeholder="Search" onchange="ons.notification.alert('Searched for: ' + this.value)"></ons-search-input>
+            </p>
+            
+            <ons-carousel  swipeable auto-scroll overscrollable id="carousel">
+                <ons-carousel-item>
+                    <div style="text-align: center;">
+                        <img src="img/1.jpg" height="250px" width="350px">
+                    </div>
+                </ons-carousel-item>
+                <ons-carousel-item>
+                    <div style="text-align: center;">
+                        <img src="img/2.jpg" height="250px" width="350px">
+                    </div>
+                </ons-carousel-item>
+                <ons-carousel-item>
+                    <div style="text-align: center;">
+                            <img src="img/3.jpg" height="250px" width="350px">
+                    </div>
+                </ons-carousel-item>
+            </ons-carousel>
         </ons-page>
     </template>
 
@@ -63,6 +78,24 @@
             document.querySelector('ons-toolbar .center')
                 .innerHTML = event.tabItem.getAttribute('label');
         });
+    </script>
+
+    <script>
+        var prev = function() {
+  var carousel = document.getElementById('carousel');
+  carousel.prev();
+};
+
+var next = function() {
+  var carousel = document.getElementById('carousel');
+  carousel.next();
+};
+
+ons.ready(function() {
+  var carousel = document.addEventListener('postchange', function(event) {
+    console.log('Changed to ' + event.activeIndex)
+  });
+});
     </script>
 </body>
 
